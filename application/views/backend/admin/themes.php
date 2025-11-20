@@ -1,0 +1,22 @@
+
+<div class="row ">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="page-title"></i> <?php echo get_phrase('themes'); ?></h4>
+      </div> 
+    </div> 
+  </div><!-- end col-->
+</div>
+
+<!-- Start page title end -->
+<div class="row justify-content-center">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-3 header-title"><?php echo get_phrase('themes'); ?></h4>
+        <iframe src="http://academy-lms.com/themes.php" class="col-12" frameborder = "0" height="500"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
