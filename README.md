@@ -39,7 +39,6 @@ This project is built on a robust and scalable architecture using the following 
 | **Backend** | [e.g., PHP, Laravel] |
 | **Frontend** | [e.g., HTML, CSS, JavaScript, React] | [e.g., Fully responsive design with Tailwind CSS/Bootstrap] |
 | **Database** | [e.g., MySQL,] |
-| **Payment** | Stripe, PayPal, [Other Gateways like Paystack/Mollie] | Secure integration for course payments. |
 | **Other Tools** | [e.g., Git LFS for large media, Zoom API for live classes] | |
 
 ---
