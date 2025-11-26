@@ -1,95 +1,107 @@
-# 🧠 MIND-MENTOR-LMS
+# 📚 MindMentor: A Learning Management System
 
-## 🌟 Overview
+**MindMentor** is a web-based Learning Management System (LMS) designed to facilitate a streamlined educational experience for instructors and students. Built on the **PHP CodeIgniter framework**, the platform enables instructors to easily create and manage courses, upload content, and oversee student enrollment, while providing students with a centralized hub for accessing course materials.
 
-**MIND-MENTOR-LMS** is a comprehensive, modern Learning Management System designed to facilitate structured **online education** and highly personalized **mentorship**. It moves beyond traditional course delivery by creating a collaborative ecosystem where students can access rich educational content while connecting directly with mentors for individualized guidance, skill development, and career advice.
+-----
 
-## ✨ Key Features
+## ✨ Features
 
-### For Learners (Mentees/Students)
+  * **Role-Based Access Control (RBAC):** Distinct interfaces and privileges for **Administrator**, **Instructor**, and **Student** roles.
+  * **Course Management:** Instructors can create, edit, and publish courses.
+  * **Content Delivery:** Instructors can upload and organize various lesson materials (e.g., PDF, documents, media links).
+  * **Student Enrollment:** Students can browse available courses and enroll, and Instructors can manage their class roster.
+  * **Centralized Dashboards:** Dedicated dashboards for each user role to manage relevant tasks and view enrolled courses.
+  * **Security:** Implements CodeIgniter's built-in security features, including secure password hashing and input sanitization, to protect data in the MySQL database.
+  * **Responsive Design:** Utilizes **Bootstrap 5** for a mobile-friendly and intuitive user interface.
 
-* **Personalized Learning Paths:** Dynamically generated course tracks based on learner goals, progress, and performance data.
-* **Interactive Content:** Access to video lectures, downloadable resources, quizzes, and hands-on assignments.
-* **Progress Tracking:** Visual dashboards and completion status tracking to monitor learning milestones.
-* **Certification:** Automated generation of course completion certificates.
-* **Reviews & Ratings:** Ability to rate courses and provide feedback to instructors/mentors.
+-----
 
-### For Mentors/Instructors
+## 💻 Technologies Used
 
-* **Easy Course Creation:** Intuitive drag-and-drop course builder to upload content (videos, PDFs, documents) and structure curriculum.
-* **Assignment Management:** Tools for creating, receiving, grading, and providing feedback on student assignments.
-* **Mentee Dashboard:** Dedicated view to manage assigned mentees, track their progress, and schedule 1:1 sessions.
-* **Revenue Generation:** Support for setting course prices, subscriptions, and secure payment processing.
-
-### For Administrators
-
-* **Role-Based Access Control (RBAC):** Dedicated, secure dashboards for Admin, Instructor/Mentor, and Student roles.
-* **User Management:** Centralized management of all platform users, including approvals for new instructors.
-* **Financial Reporting:** Detailed reporting and analytics on course enrollment, sales revenue, and payment histories.
-* **Site Configuration:** Full control over system settings, branding, email templates, and payment gateways.
-
----
-
-## 💻 Tech Stack
-
-This project is built on a robust and scalable architecture using the following technologies:
-
-| Category | Technology | Notes |
+| Category | Technology | Version / Stack |
 | :--- | :--- | :--- |
-| **Backend** | [e.g., PHP, Laravel] |
-| **Frontend** | [e.g., HTML, CSS, JavaScript, React] | [e.g., Fully responsive design with Tailwind CSS/Bootstrap] |
-| **Database** | [e.g., MySQL,] |
-| **Other Tools** | [e.g., Git LFS for large media, Zoom API for live classes] | |
+| **Backend Framework** | PHP CodeIgniter | 3.x |
+| **Server Environment** | PHP | 7.4+ |
+| **Database** | MySQL | 5.6+ |
+| **Frontend** | HTML5, CSS3, JavaScript | Bootstrap 5 |
+| **Local Environment** | XAMPP | Latest Stable |
 
----
+-----
 
-## ⚙️ Installation and Setup
+## ⚙️ Local Setup (Using XAMPP)
 
-Follow these steps to get a local copy of the project up and running.
+To run MindMentor locally, you will need a running web server environment with PHP and MySQL support. We recommend using **XAMPP**.
 
 ### Prerequisites
 
-* [e.g., PHP]
-* [e.g., Composer]
-* [e.g., Node.js and npm/yarn]
-* [e.g., MySQL Database]
+1.  **XAMPP:** Download and install the latest stable version of [XAMPP](https://www.apachefriends.org/index.html).
+2.  **Web Browser:** Any modern web browser (Chrome, Firefox, Edge).
 
-### Local Setup
+### Installation Steps
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/wehavecrown/MIND-MENTOR-LMS.git](https://github.com/wehavecrown/MIND-MENTOR-LMS.git)
-    cd MIND-MENTOR-LMS
+#### 1\. Database Setup (MySQL/phpMyAdmin)
+
+1.  Start the **Apache** and **MySQL** services from the XAMPP Control Panel.
+2.  Open your web browser and navigate to `http://localhost/phpmyadmin`.
+3.  Click **New** on the left sidebar to create a new database.
+4.  Name the database (e.g., `mindmentor_lms`).
+5.  Import your database structure:
+      * Click on the newly created database.
+      * Go to the **Import** tab.
+      * Select the SQL file provided with the project (e.g., `mindmentor_db.sql`) and click **Go**.
+
+#### 2\. Project File Configuration
+
+1.  Navigate to your XAMPP installation directory (usually `C:\xampp`).
+
+2.  Place the entire MindMentor project folder inside the **`htdocs`** directory (e.g., `C:\xampp\htdocs\mindmentor`).
+
+3.  **Configure Database Connection:**
+
+      * Open the CodeIgniter configuration file, typically found at `application/config/database.php`.
+      * Update the following lines to match your database settings:
+
+    <!-- end list -->
+
+    ```php
+    $db['default'] = array(
+        // ...
+        'hostname' => 'localhost',
+        'username' => 'root', // XAMPP default
+        'password' => '',     // XAMPP default (leave blank)
+        'database' => 'mindmentor_lms', // Name you created in Step 1.4
+        // ...
+    );
     ```
 
-2.  **Install dependencies:**
-    ```bash
-    # For backend dependencies
-    composer install 
-    
-    # For frontend dependencies
-    npm install
+#### 3\. Base URL Configuration
+
+1.  Open the main configuration file: `application/config/config.php`.
+
+2.  Update the `$config['base_url']` setting to match your local project path:
+
+    ```php
+    $config['base_url'] = 'http://localhost/mindmentor/';
     ```
 
-3.  **Configure Environment:**
-    * Create a copy of the example environment file:
-        ```bash
-        cp .env.example .env
-        ```
-    * Edit the `.env` file to configure your database connection, Stripe keys, and application URL.
+#### 4\. Access the Application
 
-4.  **Database Migration & Seeding:**
-    ```bash
-    [Run your database migration command, e.g., php artisan migrate]
-    [Run your database seeder command, e.g., php artisan db:seed]
-    ```
+1.  Ensure Apache and MySQL services are still running in XAMPP.
+2.  Open your web browser and navigate to: `http://localhost/mindmentor/`
 
-5.  **Run the application:**
-    ```bash
-    [Run your development server command, e.g., php artisan serve]
-    npm run dev  # (If using a frontend build step)
-    ```
+-----
 
-The application should now be accessible at `[Your Local Host URL, e.g., http://127.0.0.1:8000]`.
+## 🚀 Usage Guide
 
----
+### Instructor Workflow
+
+1.  **Login:** Log in with your Instructor credentials.
+2.  **Course Creation:** Navigate to the **Course Module** to create a new course by providing a title and description.
+3.  **Content Upload:** Use the Course Management interface to upload lesson materials (Lessons Controller) that students can view.
+4.  **Student Management:** View the enrollment roster for your courses, and manually enroll/unenroll students as needed.
+
+### Student Workflow
+
+1.  **Login:** Log in with your Student credentials.
+2.  **Browse & Enroll:** Visit the **Available Courses** page to view the catalog. Click the **Enroll** button on the desired course.
+3.  **View Content:** Access your **Dashboard** to see enrolled courses, and click to view the uploaded lesson materials.
